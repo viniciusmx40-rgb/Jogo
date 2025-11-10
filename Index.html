@@ -1,140 +1,149 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
+<html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>2D Mobile Game Screen</title>
+<title>Shopping Cart</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            "primary": "#2bee6c",
-            "background-light": "#f6f8f6",
-            "background-dark": "#102216",
-          },
-          fontFamily: {
-            "display": ["Be Vietnam Pro"]
-          },
-          borderRadius: {
-            "DEFAULT": "1rem",
-            "lg": "2rem",
-            "xl": "3rem",
-            "full": "9999px"
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
           },
         },
-      },
-    }
-  </script>
+      }
+    </script>
 <style>
-    .game-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-    }
-
-    .parallax-1 {
-      background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-      z-index: 1;
-    }
-
-    .parallax-2 {
-      background-image: url('https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-      z-index: 2;
-      opacity: 0.5;
-    }
-
-    .player-character {
-      width: 64px;
-      height: 64px;
-      background-image: url('https://images.unsplash.com/photo-1611601322175-28e6b3543168?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      z-index: 10;
-    }
-  </style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
 <style>
     body {
       min-height: max(884px, 100dvh);
     }
   </style>
   </head>
-<body class="font-display">
-<div class="relative flex h-[800px] w-full max-w-md mx-auto flex-col bg-background-light dark:bg-background-dark group/design-root overflow-hidden shadow-2xl">
-<!-- Game World View -->
-<div class="absolute inset-0 z-0">
-<div class="game-background parallax-1" data-alt="Vibrant, colorful abstract gradient background representing a distant sky."></div>
-<div class="game-background parallax-2" data-alt="Silhouette of a forest landscape, creating a sense of depth."></div>
-</div>
-<!-- Player Character -->
-<div class="absolute inset-0 z-10 flex items-center justify-center">
-<div class="player-character" data-alt="Pixel art style hero character with a sword and shield."></div>
-</div>
-<!-- Main UI Container -->
-<div class="relative z-20 flex h-full flex-col justify-between">
-<!-- TopAppBar / HUD -->
-<div class="bg-black/30 backdrop-blur-sm pt-4">
-<div class="flex items-center p-4 pb-2 justify-between text-white">
-<div class="flex-1">
-<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">SCORE: 001250</h2>
-</div>
-<div class="flex items-center justify-center gap-1.5 flex-1">
-<span class="material-symbols-outlined text-primary text-3xl">favorite</span>
-<span class="material-symbols-outlined text-primary text-3xl">favorite</span>
-<span class="material-symbols-outlined text-white/50 text-3xl">favorite_border</span>
-</div>
-<div class="flex w-12 items-center justify-end flex-1">
-<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-white active:bg-white/20">
-<span class="material-symbols-outlined text-3xl">pause</span>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex items-center justify-between bg-background-light/80 dark:bg-background-dark/80 p-4 pb-2 backdrop-blur-sm">
+<button class="flex size-10 shrink-0 items-center justify-center text-slate-800 dark:text-slate-200">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
 </button>
+<h1 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-slate-900 dark:text-slate-50">My Cart (3)</h1>
+<div class="size-10 shrink-0"></div> <!-- Spacer -->
+</header>
+<main class="flex-grow pb-40">
+<!-- Cart Items List -->
+<div class="flex flex-col gap-4 p-4">
+<!-- List Item 1 -->
+<div class="flex gap-4 rounded-xl bg-white dark:bg-slate-800 p-4 shadow-sm">
+<div class="flex flex-grow items-start gap-4">
+<div class="aspect-square size-[70px] shrink-0 rounded-lg bg-slate-200 dark:bg-slate-700 bg-cover bg-center bg-no-repeat" data-alt="iPhone 15 Pro in Natural Titanium color" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDVcTyrB5LjDhO6MGdXBEbEOPrpNoFhYj_okltDBYO2PCTHaj07XgIOshD9KgwV1yfTgIn8xZYbVU8kBWwzTEAgvjqM5a9ApxFMmbN8KQLIZ8rs3kdk0b3YXNXyvW3ATcUOuZEvwmRg0pzpt7AMtvqDuL8WJmYYNeBLo1Hb7xe-NlsF8B3eVC21H1vVh6vrIAoaBatN_Z0wTEu_O5lpObXz8Aolw3KKaKDCAfNvDp_AHwbf5IA7S0zlsSiURfjefMQtgFIUMZylTeE");'></div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-base font-medium leading-normal text-slate-900 dark:text-slate-50">iPhone 15 Pro</p>
+<p class="text-sm font-normal leading-normal text-slate-500 dark:text-slate-400">$999.00</p>
+<p class="text-sm font-normal leading-normal text-slate-500 dark:text-slate-400">256GB, Natural Titanium</p>
+</div>
+</div>
+<div class="flex shrink-0 flex-col items-end justify-between">
+<button class="text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+<div class="flex items-center gap-2 text-slate-900 dark:text-slate-50">
+<button class="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 text-lg font-medium leading-normal">-</button>
+<span class="w-6 p-0 text-center text-base font-medium leading-normal">1</span>
+<button class="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 text-lg font-medium leading-normal">+</button>
 </div>
 </div>
 </div>
-<!-- ActionsBar / On-Screen Controls -->
-<div class="bg-black/30 backdrop-blur-sm pb-4">
-<div class="flex items-end justify-between p-4">
-<!-- D-Pad -->
-<div class="grid grid-cols-3 gap-2 w-40">
-<div class="col-start-1 col-end-2 row-start-2 row-end-3">
-<div class="flex aspect-square flex-col items-center justify-center gap-2 rounded-full bg-white/20 py-2.5 text-center active:bg-primary/50">
-<span class="material-symbols-outlined text-white text-3xl">arrow_back</span>
+<!-- List Item 2 -->
+<div class="flex gap-4 rounded-xl bg-white dark:bg-slate-800 p-4 shadow-sm">
+<div class="flex flex-grow items-start gap-4">
+<div class="aspect-square size-[70px] shrink-0 rounded-lg bg-slate-200 dark:bg-slate-700 bg-cover bg-center bg-no-repeat" data-alt="Silicone Case with MagSafe in Storm Blue" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuChe77weAh3aYPYyZGc2KcxDvCG9D0EWi3v5ER0RqMEjOvbhNNZ_C62dd9jUFcem9cBGi9us_g70_l4RgHGh-PB4KlWRpFIJpIMjA-DevGfnTy1Ay-zNvnzsPK6GnHINTCe9rpZEPlY7lDCEcgCQ5DgTuL5oBMmoraakOJeJUqKdV5vk2EFl6mz5thi0Jw_GP5JFF8pJJweUSN1V_Tb2k6VGNvJxMkHX5uxoYn25navttTNCIo2GZbYXEattHCbq3kClTse1i3iGZc");'></div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-base font-medium leading-normal text-slate-900 dark:text-slate-50">Silicone Case with MagSafe</p>
+<p class="text-sm font-normal leading-normal text-slate-500 dark:text-slate-400">$49.00</p>
+<p class="text-sm font-normal leading-normal text-slate-500 dark:text-slate-400">Storm Blue</p>
 </div>
 </div>
-<div class="col-start-3 col-end-4 row-start-2 row-end-3">
-<div class="flex aspect-square flex-col items-center justify-center gap-2 rounded-full bg-white/20 py-2.5 text-center active:bg-primary/50">
-<span class="material-symbols-outlined text-white text-3xl">arrow_forward</span>
-</div>
-</div>
-</div>
-<!-- Action Buttons -->
-<div class="flex items-center gap-4">
-<div class="flex flex-col items-center gap-2 text-center">
-<div class="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 p-2.5 active:bg-primary/50">
-<span class="material-symbols-outlined text-white text-4xl">swords</span>
-</div>
-<p class="text-white text-sm font-medium leading-normal">Attack</p>
-</div>
-<div class="flex flex-col items-center gap-2 text-center">
-<div class="flex h-20 w-20 items-center justify-center rounded-full bg-primary/80 p-2.5 active:bg-primary">
-<span class="material-symbols-outlined text-background-dark text-5xl">arrow_upward</span>
-</div>
-<p class="text-white text-sm font-medium leading-normal">Jump</p>
+<div class="flex shrink-0 flex-col items-end justify-between">
+<button class="text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+<div class="flex items-center gap-2 text-slate-900 dark:text-slate-50">
+<button class="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 text-lg font-medium leading-normal">-</button>
+<span class="w-6 p-0 text-center text-base font-medium leading-normal">1</span>
+<button class="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 text-lg font-medium leading-normal">+</button>
 </div>
 </div>
 </div>
+<!-- List Item 3 -->
+<div class="flex gap-4 rounded-xl bg-white dark:bg-slate-800 p-4 shadow-sm">
+<div class="flex flex-grow items-start gap-4">
+<div class="aspect-square size-[70px] shrink-0 rounded-lg bg-slate-200 dark:bg-slate-700 bg-cover bg-center bg-no-repeat" data-alt="20W USB-C Power Adapter" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0aR-nlgFz1snp74AF_UM5UC3QVxC8rvOdjRo0rPdGlLd4c5OBYAZrVZumDUoSUOhI9H-Um4ZHpJbwkWxxX9WGA95D-boeFpLBIUdx5eEqF-t6whv8aUS9CCKSrOKIeaTXSicnfC9fUKG5OutxwpV9qBE_go8URKMKKtiHIPfHRKvD9WJgCnudKbaBh-KU0d7EfM5qYwHn6LY3yK36Q5rvlbNHuJdcsH18a2v0o3j3TY6XFMBw4FWXT-bXQqdCZVSwKbX0yICYGvo");'></div>
+<div class="flex flex-1 flex-col justify-center">
+<p class="text-base font-medium leading-normal text-slate-900 dark:text-slate-50">20W USB-C Power Adapter</p>
+<p class="text-sm font-normal leading-normal text-slate-500 dark:text-slate-400">$19.00</p>
+<p class="text-sm font-normal leading-normal text-slate-500 dark:text-slate-400">White</p>
 </div>
 </div>
+<div class="flex shrink-0 flex-col items-end justify-between">
+<button class="text-slate-500 dark:text-slate-400 hover:text-red-500 dark:hover:text-red-400">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+<div class="flex items-center gap-2 text-slate-900 dark:text-slate-50">
+<button class="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 text-lg font-medium leading-normal">-</button>
+<span class="w-6 p-0 text-center text-base font-medium leading-normal">1</span>
+<button class="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 text-lg font-medium leading-normal">+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Promo Code -->
+<div class="flex items-end gap-2 px-4 py-3">
+<label class="flex min-w-40 flex-1 flex-col">
+<input class="form-input h-14 flex-1 resize-none overflow-hidden rounded-lg border border-slate-300 bg-white p-[15px] text-base font-normal leading-normal text-slate-900 placeholder:text-slate-400 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/20 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-50 dark:placeholder:text-slate-500 dark:focus:border-primary" placeholder="Enter promo code" value=""/>
+</label>
+<button class="flex h-14 shrink-0 items-center justify-center rounded-lg bg-slate-200 px-6 text-base font-medium text-slate-800 dark:bg-slate-700 dark:text-slate-200">Apply</button>
+</div>
+<!-- Spacer -->
+<div class="h-4"></div>
+</main>
+<!-- Bottom Checkout Bar -->
+<footer class="fixed bottom-0 left-0 right-0 w-full border-t border-slate-200 bg-white/80 p-4 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/80">
+<!-- Order Summary -->
+<div class="flex flex-col gap-2 pb-4">
+<div class="flex justify-between text-base">
+<p class="font-normal text-slate-600 dark:text-slate-400">Subtotal</p>
+<p class="font-medium text-slate-800 dark:text-slate-200">$1067.00</p>
+</div>
+<div class="flex justify-between text-base">
+<p class="font-normal text-slate-600 dark:text-slate-400">Shipping</p>
+<p class="font-medium text-slate-800 dark:text-slate-200">$5.00</p>
+</div>
+<div class="flex justify-between text-lg">
+<p class="font-bold text-slate-900 dark:text-slate-50">Total</p>
+<p class="font-bold text-slate-900 dark:text-slate-50">$1072.00</p>
+</div>
+</div>
+<!-- CTA Button -->
+<button class="h-14 w-full rounded-xl bg-primary text-base font-bold text-white shadow-lg shadow-primary/30 transition-transform duration-200 ease-in-out hover:scale-[1.02]">
+                Proceed to Checkout
+            </button>
+</footer>
 </div>
 </body></html>
